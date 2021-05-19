@@ -16,11 +16,20 @@ export class Card extends BaseComponent {
     `;
   }
 
-  flipOut(): void {
-    this.element.classList.remove(FLIP_CLASS);
+  flipToBack(): Promise<void> {
+    return this.flip(true)
   }
 
-  flipTo(): void {
-    this.element.classList.add(FLIP_CLASS);
+  flipToFront(): Promise<void> {
+    return this.flip(false);
+  }
+
+  private flip(isFront: boolean): Promise<void> {
+    return new Promise((resolve) => {
+      this.element.classList.toggle(FLIP_CLASS, !isFront);
+      this.element.addEventListener('transitionend', () => resolve(), {
+        once: true,
+      });
+    });
   }
 }
