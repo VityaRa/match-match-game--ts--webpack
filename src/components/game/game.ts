@@ -1,11 +1,16 @@
 import { BaseComponent } from '../base-component';
 import { Card } from '../card/card';
 import { CardsField } from '../cards-field/cards-field';
+import { delay } from '../shared/delay';
 
+
+const FLIP_DELAY = 3
 type imageURL = string;
 
 export class Game extends BaseComponent {
   private readonly cardsField = new CardsField();
+  private activeCard?: Card;
+  private isAnimation: boolean = false;
 
   constructor() {
     super()
@@ -25,7 +30,33 @@ export class Game extends BaseComponent {
     this.cardsField.addCards(cards);
   }
 
-  private cardHandler(card: Card): void {
+  private async cardHandler(card: Card) {
+    if (this.isAnimation) return;
+    if (!card.isFlipped) return;
+    this.isAnimation = true;
+    await card.flipToFront()
+    await delay(FLIP_DELAY)
 
+    if (!this.activeCard) {
+      this.activeCard = card;
+      this.isAnimation = false
+      return;
+    }
+
+    if (this.activeCard.image != card.image) {
+      // error chosen card logic
+      /*
+      
+      */
+      await delay(FLIP_DELAY * 1000)
+      await Promise.all([this.activeCard.flipToBack(), card.flipToBack()])
+    } else {
+      // right chosen card logic
+      /*
+      
+      */
+    }
+    this.activeCard = undefined
+    this.isAnimation = false
   }
 }
