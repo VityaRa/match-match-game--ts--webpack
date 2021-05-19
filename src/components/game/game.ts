@@ -20,7 +20,12 @@ export class Game extends BaseComponent {
       .map((url) => new Card(url))
       .sort(() => Math.random() - 0.5);
 
+    cards.forEach(card => card.element.addEventListener('click', () => this.cardHandler(card)))
+
     this.cardsField.addCards(cards);
   }
 
+  private cardHandler(card: Card): void {
+
+  }
 }
