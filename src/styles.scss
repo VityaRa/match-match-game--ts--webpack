@@ -7,10 +7,21 @@ html {
   font-size: 20px;
 }
 
+main {
+  min-height: calc(100vh - 2rem);
+}
+
 body {
   min-height: 100vh;
   background: rgb(156, 102, 0);
   color: wheat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
