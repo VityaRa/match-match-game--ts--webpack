@@ -39,6 +39,8 @@
     height: 100%;
     backface-visibility: hidden;
     border-radius: inherit;
+    background-position: center;
+    background-size: cover;
   }
 
 
@@ -47,9 +49,8 @@
   }
   &__back{
     background-color:teal;
-    background-image: url('./assets/card-image.png');
-    background-position: center;
-    background-size: cover;
+    background-image: url('../../assets/card-image.png');
+
     transform-style: preserve-3d;
     transform: rotateY(180deg);
   }
