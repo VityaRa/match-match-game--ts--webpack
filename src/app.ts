@@ -1,4 +1,10 @@
-export class App {
+import { CardsField } from "./components/cards-field/cards-field";
 
-  constructor(private readonly rootElement: HTMLElement) {}
+export class App {
+  private readonly cardsField: CardsField;
+
+  constructor(private readonly rootElement: HTMLElement) {
+    this.cardsField = new CardsField()
+    this.rootElement.appendChild(this.cardsField.element)
+  }
 }
