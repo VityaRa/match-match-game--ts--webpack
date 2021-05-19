@@ -1,3 +1,2 @@
 import './styles.scss';
-
-console.log('Hello world');
+import img from './assets/card-image.png'
