@@ -1,6 +1,10 @@
+$main-color: #2196F3;
+$interface-color: #fff;
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -13,11 +17,9 @@ main {
 
 body {
   min-height: 100vh;
-  background: rgb(156, 102, 0);
-  color: wheat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: $interface-color;
+  color: $interface-color;
+
 }
 
 footer {
@@ -26,6 +28,41 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
+.about-nav {
+  width: 100%;
+  display: flex;
+  background-color: $main-color;
+  align-items: center;
+  .logo {
+    padding: .5rem 1rem;
+    flex-basis: content;
+    height: 100%;
+    p.highlight {
+      background-color: $interface-color;
+      color: $main-color;
+    }
+  }
+  .buttons-list{
+    display: flex;
+    li {
+      display: flex;
+    }
+  }
+  .register-btn {
+    button {
+      width: 10rem;
+      height: 2rem;
+      font-size: 0.7rem;
+      border: 0;
+      border-radius: 0.25rem;
+      text-transform: uppercase;
+      color: $main-color;
+      box-shadow: 0 .25rem 0.75rem rgba(0,0,0,0.5);
+    }
+  }
+}
+
 
 
 
