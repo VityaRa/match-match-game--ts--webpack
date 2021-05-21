@@ -14,7 +14,7 @@ export class Game extends BaseComponent {
   private isAnimation = false;
 
   constructor() {
-    super();
+    super('div', ['game-content']);
     this.cardsField = new CardsField();
     this.element.appendChild(this.cardsField.element);
   }
