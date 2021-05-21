@@ -2,7 +2,7 @@ import { BaseComponent } from '../base-component';
 import { Card } from '../card/card';
 import './cards-field.scss';
 
-const SHOW_TIME = 1
+const SHOW_TIME = 1;
 
 export class CardsField extends BaseComponent {
   private cards: Card[] = [];
@@ -18,9 +18,9 @@ export class CardsField extends BaseComponent {
 
   addCards(cards: Card[]): void {
     this.cards = cards;
-    this.cards.forEach(card => this.element.appendChild(card.element))
+    this.cards.forEach((card) => this.element.appendChild(card.element));
     setTimeout(() => {
-      this.cards.forEach(card => card.flipToBack())
-    }, SHOW_TIME * 1000)
+      this.cards.forEach((card) => card.flipToBack());
+    }, SHOW_TIME * 1000);
   }
 }

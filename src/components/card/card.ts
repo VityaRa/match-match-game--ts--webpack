@@ -2,12 +2,12 @@ import { BaseComponent } from '../base-component';
 import './card.scss';
 
 const FLIP_CLASS = 'flipped';
-type imageURL = string;
+type ImageURL = string;
 
 export class Card extends BaseComponent {
-  isFlipped:boolean = false
+  isFlipped = false;
 
-  constructor(readonly image: imageURL) {
+  constructor(readonly image: ImageURL) {
     super('div', ['card-container']);
 
     this.element.innerHTML = `
@@ -19,12 +19,12 @@ export class Card extends BaseComponent {
   }
 
   flipToBack(): Promise<void> {
-    this.isFlipped = true
-    return this.flip(true)
+    this.isFlipped = true;
+    return this.flip(true);
   }
 
   flipToFront(): Promise<void> {
-    this.isFlipped = false
+    this.isFlipped = false;
     return this.flip(false);
   }
 
