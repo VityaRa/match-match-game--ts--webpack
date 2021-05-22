@@ -1,4 +1,5 @@
 import { BaseComponent } from '../base-component';
+import './header.scss'
 
 export class RouteButton extends BaseComponent {
   private textField: BaseComponent;

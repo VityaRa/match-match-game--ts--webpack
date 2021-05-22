@@ -11,7 +11,7 @@ export class Card extends BaseComponent {
     super('div', ['card-container']);
 
     this.element.innerHTML = `
-      <div class="card">
+      <div class="game-card">
         <div class="card__front" style="background-image: url('./images/${image}');"></div>
         <div class="card__back"></div>
       </div>

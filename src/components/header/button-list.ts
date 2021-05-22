@@ -1,5 +1,6 @@
 import { BaseComponent } from '../base-component';
 import { RouteButton } from './route-btn';
+import './header.scss'
 
 const buttons = [
   {

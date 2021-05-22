@@ -2,6 +2,7 @@ import { BaseComponent } from '../base-component';
 import { ActionButton } from './action-btn';
 import { ButtonList } from './button-list';
 import { Logo } from './logo';
+import './header.scss'
 
 export class Header extends BaseComponent {
   private readonly logo: Logo;
