@@ -1,7 +1,7 @@
-$main-color: #2196f3;
-$interface-color: #fff;
-$hover-color: #1e88e5;
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import './components/shared/colors.scss';
+
 
 * {
   margin: 0;
@@ -25,6 +25,7 @@ body {
 }
 
 footer {
+  color: #000;
   height: 2rem;
   display: flex;
   align-items: center;

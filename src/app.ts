@@ -1,4 +1,4 @@
-import { Content } from './components/content/content';
+import { BaseComponent } from './components/base-component';
 import { Game } from './components/game/game';
 import { Header } from './components/header/header';
 import { ImageCategory } from './models/image-category';
@@ -8,15 +8,15 @@ export class App {
 
   private readonly header: Header;
 
-  private readonly pageContent: Content;
+  private readonly pageContent: BaseComponent;
 
   constructor(private readonly rootElement: HTMLElement) {
     this.header = new Header();
     this.rootElement.appendChild(this.header.element);
-    this.game = new Game();
-    this.pageContent = new Content();
+    this.pageContent = new BaseComponent('div', ['content']);
     this.rootElement.appendChild(this.pageContent.element);
-    this.pageContent.element.appendChild(this.rootElement.appendChild(this.game.element));
+
+    this.game = new Game()
   }
 
   async start(): Promise<void> {
