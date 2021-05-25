@@ -42,14 +42,15 @@ export class AboutPage extends BaseComponent {
     this.gameSettingsButton = new RouteButton(
       'Game Settings',
       buttons[2].icon,
-      ['settings-button']
+      ['settings-button'],
+      buttons[2].ref
     );
-    this.rightContainer = new BaseComponent('div', ['right-side-container'])
+    this.rightContainer = new BaseComponent('div', ['right-side-container']);
     this.input = new Input();
 
     this.element.appendChild(this.gameSettingsButton.element);
-    this.rightContainer.element.appendChild(this.input.element)
-    this.rightContainer.element.appendChild(this.gameSettingsButton.element)
-    this.element.appendChild(this.rightContainer.element)
+    this.rightContainer.element.appendChild(this.input.element);
+    this.rightContainer.element.appendChild(this.gameSettingsButton.element);
+    this.element.appendChild(this.rightContainer.element);
   }
 }
