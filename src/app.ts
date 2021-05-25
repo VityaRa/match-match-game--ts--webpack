@@ -4,6 +4,7 @@ import { Game } from './components/game/game';
 import { Header } from './components/header/header';
 import { Content } from './components/content/content';
 import { ImageCategory } from './models/image-category';
+import { ScorePage } from './components/score/score';
 
 
 export class App {
@@ -15,14 +16,16 @@ export class App {
 
   private readonly pageAbout: AboutPage;
 
+  private readonly pageScore: ScorePage;
+
   constructor(private readonly rootElement: HTMLElement) {
     this.header = new Header();
     this.rootElement.appendChild(this.header.element);
     this.pageContent = new Content();
     this.rootElement.appendChild(this.pageContent.element);
     this.pageAbout = new AboutPage()
-    this.pageContent.contentField.element.appendChild(this.pageAbout.element);
-
+    //this.pageContent.contentField.element.appendChild(this.pageAbout.element);
+    this.pageScore = new ScorePage();
     this.game = new Game()
   }
 
