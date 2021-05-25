@@ -1,0 +1,23 @@
+[
+  {
+    "firstname": "Nicci",
+    "lastname": "Troiani",
+    "email": "nicci@gmail.com",
+    "points": "456",
+    "image": "string"
+  },
+  {
+    "firstname": "George",
+    "lastname": "Fields",
+    "email": "jack@gmail.com",
+    "points": "358",
+    "image": "string"
+  },
+  {
+    "firstname": "Jones",
+    "lastname": "Dermot",
+    "email": "dermot@gamil.com",
+    "points": "211",
+    "image": "string"
+  }
+]
