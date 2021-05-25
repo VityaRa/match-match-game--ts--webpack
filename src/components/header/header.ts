@@ -14,7 +14,7 @@ export class Header extends BaseComponent {
     this.logo = new Logo();
 
     this.actionBtnContainer = new BaseComponent('div', ['register-btn'])
-    this.actionBtnContainer.element.appendChild(new ActionButton('Register').element)
+    this.actionBtnContainer.element.appendChild(new ActionButton('Register new player').element)
     this.buttonListContainer = new BaseComponent('div', ['buttons-list']);
 
     this.buttonListContainer.element.appendChild(new ButtonList().element)

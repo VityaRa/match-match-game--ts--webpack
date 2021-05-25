@@ -6,7 +6,7 @@ export class RouteButton extends BaseComponent {
   private icon: BaseComponent;
   private content: BaseComponent;
 
-  constructor(text: string, svg: string) {
+  constructor(text: string, svg: string, classes: string[]) {
     super('li');
     this.textField = new BaseComponent('p')
     this.textField.element.innerHTML = text;
@@ -15,7 +15,7 @@ export class RouteButton extends BaseComponent {
 
     this.icon.element.innerHTML = svg;
 
-    this.content = new BaseComponent('div', ['header__button'])
+    this.content = new BaseComponent('div', [...classes])
     this.content.element.appendChild(this.icon.element);
     this.content.element.appendChild(this.textField.element)
     this.element.appendChild(this.content.element)

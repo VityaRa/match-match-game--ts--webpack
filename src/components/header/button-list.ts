@@ -2,7 +2,7 @@ import { BaseComponent } from '../base-component';
 import { RouteButton } from './route-btn';
 import './header.scss'
 
-const buttons = [
+export const buttons = [
   {
     text: 'About Game',
     icon: `
@@ -40,7 +40,7 @@ export class ButtonList extends BaseComponent {
   constructor() {
     super('ul');
     for (let button of buttons) {
-      this.element.appendChild(new RouteButton(button.text, button.icon).element);
+      this.element.appendChild(new RouteButton(button.text, button.icon, ['header__button']).element);
     }
   }
 }
