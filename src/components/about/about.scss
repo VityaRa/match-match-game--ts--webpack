@@ -1,0 +1,76 @@
+@import '../shared/colors.scss';
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  h2 {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .left-side-container {
+    ul {
+      li {
+        width: 360px;
+        background-color: #fff;
+        margin-bottom: 0.75rem;
+        padding: 0.75rem;
+        word-wrap: break-word;
+        .card-content {
+          display: flex;
+          .card-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 2rem;
+            min-height: 2rem;
+            background-color: $main-color;
+            border-radius: 50%;
+            color: #fff;
+            -webkit-box-shadow: 0px 2px 24px 6px rgba(34, 60, 80, 0.2);
+            -moz-box-shadow: 0px 2px 24px 6px rgba(34, 60, 80, 0.2);
+            box-shadow: 0px 2px 24px 6px rgba(34, 60, 80, 0.2);
+          }
+          .card-text {
+            font-size: 0.7rem;
+            padding-left: 0.75rem;
+            color: rgba(0, 0, 0, 0.6);
+          }
+        }
+      }
+      li:first-child {
+        height: 230px;
+      }
+      li:nth-child(2) {
+        height: 130px;
+      }
+      li:nth-child(3) {
+        height: 240px;
+      }
+    }
+  }
+
+  .right-side-container {
+    .settings-button {
+      list-style: none;
+      width: 120px;
+      height: 75px;
+      border: 0;
+      background-color: $main-color;
+      p {
+        color: #fff;
+        font-size: 0.75rem;
+      }
+    }
+    .register-player {
+      width: 300px;
+      height: 220px;
+      background-color: #fafafa;
+      padding: 1rem 0.75rem;
+      h3 {
+        font-weight: medium;
+        font-size: 1rem;
+      }
+    }
+  }
+}
