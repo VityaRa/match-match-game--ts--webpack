@@ -39,6 +39,7 @@ export const buttons = [
     ref: 'settings'
   },
 ];
+
 export class ButtonList extends BaseComponent {
   constructor() {
     super('ul');
