@@ -5,16 +5,15 @@ import './about.scss';
 import { buttons } from '../header/button-list';
 import { Input } from '../input/input';
 
+const imageFolderURL = '../../assets/'
+
 export class AboutPage extends BaseComponent {
   private readonly leftContainer: BaseComponent;
-  private readonly gameSettingsButton: RouteButton;
-  private readonly input: Input;
   private readonly rightContainer: BaseComponent;
   constructor() {
     super('div', ['about']);
     this.leftContainer = new BaseComponent('div', ['left-side-container']);
     this.leftContainer.element.innerHTML = `
-    <div class="left-side-container">
     <h2>How to play?</h2>
     <ul>
       <li>
@@ -36,21 +35,18 @@ export class AboutPage extends BaseComponent {
         </div>
       </li>
     </ul>
-  </div>
     `;
-    this.element.appendChild(this.leftContainer.element);
-    this.gameSettingsButton = new RouteButton(
-      'Game Settings',
-      buttons[2].icon,
-      ['settings-button'],
-      buttons[2].ref
-    );
     this.rightContainer = new BaseComponent('div', ['right-side-container']);
-    this.input = new Input();
-
-    this.element.appendChild(this.gameSettingsButton.element);
-    this.rightContainer.element.appendChild(this.input.element);
-    this.rightContainer.element.appendChild(this.gameSettingsButton.element);
+    this.rightContainer.element.innerHTML = `
+    <div class="user-container" style="background-image: url(${imageFolderURL + 'user.jpg'})">
+    </div>
+    <div class="btn-container" style="background-image: url(${imageFolderURL + 'settings-button-image.png'})">
+    </div>
+    <div class="cards-preview-container" style="background-image: url(${imageFolderURL + 'cards-preview.png'})">
+    </div>
+    `
+    this.element.appendChild(this.leftContainer.element);
     this.element.appendChild(this.rightContainer.element);
+
   }
 }

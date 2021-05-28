@@ -7,6 +7,7 @@ import { ImageCategory } from './models/image-category';
 import { ScorePage } from './components/score/score-page';
 import { ScoreModel } from './models/score-model';
 import { Router } from './components/router/router';
+import { SettingsPage } from './components/setting/setting';
 
 export interface IState {
   currentPath: string,
@@ -29,12 +30,12 @@ export class App {
 
   private readonly pageScore: ScorePage;
 
+  private readonly pageSettings: SettingsPage;
+
   private readonly pageGame: Game;
 
   private readonly btns: NodeListOf<Element>;
 
-
-  //private readonly router: Router;
 
   constructor(private readonly rootElement: HTMLElement) {
     this.header = new Header();
@@ -47,9 +48,11 @@ export class App {
 
     this.pageAbout = new AboutPage();
     this.pageScore = new ScorePage();
+    this.pageSettings = new SettingsPage();
     this.pageGame = new Game();
+    this.pageContent.contentField.element.appendChild(this.pageGame.element);
+    this.start()
 
-    this.render('about')
 
     this.btns = document.querySelectorAll('.buttons-list li');
     this.btns.forEach(btn => btn.addEventListener('click', () => {
@@ -81,9 +84,10 @@ export class App {
 
   }
 
-  getPage(path: string): AboutPage | ScorePage{
+  getPage(path: string): AboutPage | ScorePage | SettingsPage{
     if (path === 'about') return new AboutPage();
-    return new ScorePage();
+    if (path === 'best') return new ScorePage();
+    return new SettingsPage();
   }
 
   clearPage():void {

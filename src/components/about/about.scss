@@ -51,26 +51,45 @@
   }
 
   .right-side-container {
-    .settings-button {
-      list-style: none;
-      width: 120px;
-      height: 75px;
-      border: 0;
-      background-color: $main-color;
-      p {
-        color: #fff;
-        font-size: 0.75rem;
-      }
-    }
-    .register-player {
+    // .settings-button {
+    //   list-style: none;
+    //   width: 120px;
+    //   height: 75px;
+    //   border: 0;
+    //   background-color: $main-color;
+    //   p {
+    //     color: #fff;
+    //     font-size: 0.75rem;
+    //   }
+    // }
+    // .register-player {
+    //   width: 300px;
+    //   height: 220px;
+    //   background-color: #fafafa;
+    //   padding: 1rem 0.75rem;
+    //   h3 {
+    //     font-weight: medium;
+    //     font-size: 1rem;
+    //   }
+    // }
+    .user-container {
       width: 300px;
       height: 220px;
-      background-color: #fafafa;
-      padding: 1rem 0.75rem;
-      h3 {
-        font-weight: medium;
-        font-size: 1rem;
-      }
+    }
+    .btn-container{
+      width: 115px;
+      height: 75px;
+      margin-top: 30px;
+    }
+    .cards-preview-container{
+      width: 330px;
+      height: 240px;
+      margin-top: 80px;
+    }
+    .user-container, .btn-container, .cards-preview-container{
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   }
 }
