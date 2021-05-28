@@ -5,7 +5,6 @@ import './about.scss';
 import { buttons } from '../header/button-list';
 import { Input } from '../input/input';
 
-const imageFolderURL = '../../assets/'
 
 export class AboutPage extends BaseComponent {
   private readonly leftContainer: BaseComponent;
@@ -38,11 +37,11 @@ export class AboutPage extends BaseComponent {
     `;
     this.rightContainer = new BaseComponent('div', ['right-side-container']);
     this.rightContainer.element.innerHTML = `
-    <div class="user-container" style="background-image: url(${imageFolderURL + 'user.jpg'})">
+    <div class="user-container">
     </div>
-    <div class="btn-container" style="background-image: url(${imageFolderURL + 'settings-button-image.png'})">
+    <div class="btn-container">
     </div>
-    <div class="cards-preview-container" style="background-image: url(${imageFolderURL + 'cards-preview.png'})">
+    <div class="cards-preview-container">
     </div>
     `
     this.element.appendChild(this.leftContainer.element);

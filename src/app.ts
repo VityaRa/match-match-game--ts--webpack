@@ -8,6 +8,7 @@ import { ScorePage } from './components/score/score-page';
 import { ScoreModel } from './models/score-model';
 import { Router } from './components/router/router';
 import { SettingsPage } from './components/setting/setting';
+import { Footer } from './components/footer/footer';
 
 export interface IState {
   currentPath: string,
@@ -23,6 +24,7 @@ export class App {
 
 
   private readonly header: Header;
+
 
   private readonly pageContent: Content;
 
@@ -50,8 +52,9 @@ export class App {
     this.pageScore = new ScorePage();
     this.pageSettings = new SettingsPage();
     this.pageGame = new Game();
-    this.pageContent.contentField.element.appendChild(this.pageGame.element);
-    this.start()
+
+    this.render('about')
+
 
 
     this.btns = document.querySelectorAll('.buttons-list li');

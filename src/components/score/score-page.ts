@@ -2,6 +2,8 @@ import { ScoreModel } from '../../models/score-model';
 import { BaseComponent } from '../base-component';
 import { ScoreItem } from './score';
 import { ScoreList } from './score-list';
+import './score-page.scss'
+
 
 export class ScorePage extends BaseComponent {
 

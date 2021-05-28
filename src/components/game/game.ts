@@ -2,6 +2,7 @@ import { BaseComponent } from '../base-component';
 import { Card } from '../card/card';
 import { CardsField } from '../cards-field/cards-field';
 import { delay } from '../shared/delay';
+import { Timer } from '../timer/timer';
 
 const FLIP_DELAY = 3;
 type ImageURL = string;
@@ -11,15 +12,22 @@ export class Game extends BaseComponent {
 
   private activeCard?: Card;
 
+  private timer: Timer;
+
   private isAnimation = false;
 
   constructor() {
     super('div', ['game-content']);
     this.cardsField = new CardsField();
+    this.timer = new Timer();
+
+    this.element.appendChild(this.timer.element);
     this.element.appendChild(this.cardsField.element);
   }
 
   startGame(images: ImageURL[]): void {
+    this.timer.start()
+
     this.cardsField.clear();
     const cards = images
       .concat(images)

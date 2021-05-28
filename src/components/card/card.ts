@@ -12,8 +12,8 @@ export class Card extends BaseComponent {
 
     this.element.innerHTML = `
       <div class="game-card">
-        <div class="card__front" style="background-image: url('./images/${image}');"></div>
-        <div class="card__back"></div>
+        <div class="game-card__front" style="background-image: url('./images/${image}');"></div>
+        <div class="game-card__back"></div>
       </div>
     `;
   }
