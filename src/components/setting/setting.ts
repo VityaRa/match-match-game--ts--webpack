@@ -23,10 +23,18 @@ export const settings = [
 ]
 
 export class SettingsPage extends BaseComponent{
+  public settings: Select[]
+
   constructor() {
     super('div', ['settings']);
-    settings.forEach(option => {
-      this.element.appendChild(new Select(option.title, option.placeHolder, option.options).element)
+    this.settings = []
+
+    settings.forEach(setting => {
+      this.settings.push(new Select(setting.title, setting.placeHolder, setting.options))
+    })
+
+    this.settings.forEach(elem => {
+      this.element.appendChild(elem.element)
     })
   }
 }
