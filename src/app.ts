@@ -10,21 +10,30 @@ import { Router } from './components/router/router';
 import { SettingsPage } from './components/setting/setting';
 import { Footer } from './components/footer/footer';
 
+const activeRouteBtnClass = 'active-btn'
+
 export interface IState {
   currentPath: string,
   isLogin: boolean,
+  gameSettings: {
+    cardsCount: number,
+    category: string,
+  }
 }
 
 export class App {
 
   public appState: IState = {
     currentPath: 'about',
-    isLogin: false
+    isLogin: false,
+    gameSettings: {
+      cardsCount: 4,
+      category: 'animal',
+    }
   };
 
 
   private readonly header: Header;
-
 
   private readonly pageContent: Content;
 
@@ -34,16 +43,13 @@ export class App {
 
   private readonly pageSettings: SettingsPage;
 
-  private readonly pageGame: Game;
+  private pageGame: Game;
 
-  private readonly btns: NodeListOf<Element>;
 
 
   constructor(private readonly rootElement: HTMLElement) {
     this.header = new Header();
     this.rootElement.appendChild(this.header.element);
-
-
 
     this.pageContent = new Content();
     this.rootElement.appendChild(this.pageContent.element);
@@ -53,18 +59,33 @@ export class App {
     this.pageSettings = new SettingsPage();
     this.pageGame = new Game();
 
-    this.render('about')
 
+    this.initApp()
+  }
 
+  initApp() {
+    this.render(this.appState.currentPath)
+    this.addRouteListeners();
+    this.highlightActiveRoute()
+  }
 
-    this.btns = document.querySelectorAll('.buttons-list li');
-    this.btns.forEach(btn => btn.addEventListener('click', () => {
+  addRouteListeners() {
+    let btns = document.querySelectorAll('.buttons-list li');
+
+    btns.forEach(btn => btn.addEventListener('click', () => {
+      if (!btn.classList.contains(activeRouteBtnClass)) {
+        this.removePrevHighlighted()
+        btn.classList.add(activeRouteBtnClass)
+      }
       let value = btn.getAttribute('data-ref');
       if (!value) value = ''
       if (this.appState.currentPath !== value) this.render(value);
     }))
   }
 
+  highlightActiveRoute() {
+    document.querySelector(`[data-ref=${this.appState.currentPath}]`)?.classList.add(activeRouteBtnClass)
+  }
 
   async start(): Promise<void> {
     const res = await fetch('./images.json');
@@ -76,24 +97,33 @@ export class App {
     this.pageGame.startGame(images);
   }
 
+  removePrevHighlighted(): void{
+    document.querySelectorAll(`[data-ref=${this.appState.currentPath}]`).forEach(btn => btn.classList.remove(activeRouteBtnClass))
+  }
+
   render(path: string): void {
     let nodeToDelete = this.pageContent.contentField.element.lastChild
     if (nodeToDelete) {
       this.pageContent.contentField.element.removeChild(nodeToDelete);
     }
+    this.changeBackForSettingsPage(path === 'settings')
     this.pageContent.contentField.element.appendChild(this.getPage(path)?.element);
     this.appState.currentPath = path
-
-
   }
 
-  getPage(path: string): AboutPage | ScorePage | SettingsPage{
-    if (path === 'about') return new AboutPage();
-    if (path === 'best') return new ScorePage();
-    return new SettingsPage();
+  changeBackForSettingsPage(isSettings: boolean) {
+    if (isSettings) document.querySelector('.inner')?.classList.add('remove-back')
+    else document.querySelector('.inner')?.classList.remove('remove-back')
   }
 
-  clearPage():void {
-
+  getPage(path: string): AboutPage | ScorePage | SettingsPage | Game{
+    if (path === 'about') return this.pageAbout;
+    if (path === 'best') return this.pageScore;
+    if (path === 'game') {
+      this.pageGame = new Game();
+      this.start();
+      return this.pageGame
+    }
+    return this.pageSettings;
   }
 }

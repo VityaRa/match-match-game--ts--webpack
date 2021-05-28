@@ -57,6 +57,9 @@
           }
         }
       }
+      li.active-btn {
+        background-color: $hover-color;
+      }
       li:hover {
         background-color: $hover-color;
       }
@@ -64,7 +67,6 @@
   }
 
   .register-btn {
-
     button {
       width: 10rem;
       height: 2rem;
@@ -76,6 +78,8 @@
       box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.5);
       font-weight: 500;
       letter-spacing: 0.0625rem;
+    cursor: pointer;
+
     }
   }
 }

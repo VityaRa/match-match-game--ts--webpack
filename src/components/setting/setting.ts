@@ -1,5 +1,6 @@
 import { BaseComponent } from "../base-component";
 import { Select } from "../select/select";
+import './setting.scss'
 
 export const settings = [
   {
@@ -16,7 +17,7 @@ export const settings = [
     options: [
       '4x4',
       '6x6',
-      '12x12',
+      '8x8',
     ]
   }
 ]

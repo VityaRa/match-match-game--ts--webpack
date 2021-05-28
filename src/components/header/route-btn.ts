@@ -21,11 +21,5 @@ export class RouteButton extends BaseComponent {
     this.element.appendChild(this.content.element)
 
 
-    // this.element.onclick = (e) => {
-    //   console.log(this.element.getAttribute('data-ref'));
-    // }
-
-
-
   }
 }

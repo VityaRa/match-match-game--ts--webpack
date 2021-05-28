@@ -1,0 +1,20 @@
+.settings__select {
+  h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 0.75rem;
+  }
+  select {
+    cursor: pointer;
+    margin-bottom: 2rem;
+    border: none;
+    border-bottom: 1px solid #E5E5E5;
+    font-size: 0.7rem;
+    width: 255px;
+    padding-left: 0.75rem;
+    padding: 0.5rem 0.75rem 0.7rem 0.75rem;
+    -webkit-appearance: none;
+    outline: none;
+    background: url('../../assets/select-arrow.png') no-repeat right;
+  }
+}
