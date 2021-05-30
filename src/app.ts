@@ -9,12 +9,17 @@ import { ScoreModel } from './models/score-model';
 import { Router } from './components/router/router';
 import { SettingsPage } from './components/setting/setting';
 import { Footer } from './components/footer/footer';
+import { Popup } from './components/popup/popup';
+import { Input } from './components/input/input';
 
 const activeRouteBtnClass = 'active-btn';
 
 export interface IState {
   currentPath: string;
-  isLogin: boolean;
+  stage: {
+    isLogin: boolean;
+    isGame: boolean;
+  };
   gameSettings: {
     cardsCount: string;
     category: string;
@@ -24,7 +29,10 @@ export interface IState {
 export class App {
   public appState: IState = {
     currentPath: 'about',
-    isLogin: false,
+    stage: {
+      isLogin: false,
+      isGame: false,
+    },
     gameSettings: {
       cardsCount: '4',
       category: 'animal',
@@ -63,7 +71,10 @@ export class App {
     this.highlightActiveRoute();
     this.getSettingsFromSelect();
     this.addWindowListener();
-
+    this.addActionHandler();
+    document.addEventListener('GameFinished', () => {
+      this.render('best')
+    })
   }
 
   getSettingsFromSelect() {
@@ -76,7 +87,17 @@ export class App {
   addWindowListener() {
     window.addEventListener('change', (e) => {
       this.getSettingsFromSelect();
-    })
+    });
+
+    window.addEventListener('click', (e) => {
+      let elem = <HTMLElement>e.target
+      if (elem.getAttribute('data-register') === 'done') {
+        this.appState.stage.isLogin = true
+
+        this.header.actionBtnContainer.element.children[0].innerHTML = 'Start Game'
+
+      }
+    });
   }
 
   addRouteListeners() {
@@ -109,6 +130,7 @@ export class App {
     const images = categories.images.map(
       (name) => `${categories.category}/${name}`
     );
+
     this.pageGame.startGame(images);
   }
 
@@ -138,12 +160,33 @@ export class App {
 
   getPage(path: string): AboutPage | ScorePage | SettingsPage | Game {
     if (path === 'about') return this.pageAbout;
-    if (path === 'best') return this.pageScore;
-    if (path === 'game') {
-      this.pageGame = new Game();
-      this.start();
-      return this.pageGame;
+    if (path === 'best') {
+      this.pageScore.fill()
+      return this.pageScore;
     }
+    if (path === 'game') return this.pageGame
     return this.pageSettings;
+  }
+
+  addActionHandler() {
+    document
+      .querySelector('.register-btn button')
+      ?.addEventListener('click', () => {
+        this.actionButtonEvent();
+      });
+  }
+
+  //showPopup()
+
+  actionButtonEvent() {
+    if (!this.appState.stage.isLogin) {
+      const pop = new Popup('Register', new Input());
+      this.rootElement.appendChild(pop.element);
+    } else if (!this.appState.stage.isGame) {
+      this.pageGame = new Game()
+      this.start()
+      this.render('game')
+      this.appState.stage.isGame = true;
+    } else alert('hey');
   }
 }
