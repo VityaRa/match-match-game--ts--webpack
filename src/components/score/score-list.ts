@@ -4,11 +4,14 @@ import { ScoreItem } from './score';
 
 export class ScoreList extends BaseComponent {
 
-  private readonly scores: ScoreItem[] = []
+  protected scores: ScoreItem[] = []
 
   constructor() {
     super('ul', ['best-score-list']);
   }
 
+  clear() {
+    this.scores = []
+  }
 
 }
