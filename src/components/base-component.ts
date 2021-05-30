@@ -5,4 +5,8 @@ export class BaseComponent {
     this.element = document.createElement(tag);
     this.element.classList.add(...styles);
   }
+
+  removeBase() {
+    this.element.remove()
+  }
 }
