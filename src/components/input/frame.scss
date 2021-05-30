@@ -1,1 +1,25 @@
 
+@use "@material/floating-label/mdc-floating-label";
+@use "@material/line-ripple/mdc-line-ripple";
+@use "@material/notched-outline/mdc-notched-outline";
+@use "@material/textfield";
+
+@include textfield.core-styles;
+
+.frame-field{
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.user-input{
+  width: auto;
+  height: auto;
+  background-color: #fafafa;
+  padding: 2rem 0;
+}
+
+.wrong-frame {
+  border: 1px solid red;
+}

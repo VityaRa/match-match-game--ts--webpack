@@ -18,27 +18,34 @@ export const settingsForInputs = {
 export const frameTitles = [
   {
     title: 'First Name',
-    settings: settingsForInputs.firstName,
+    settings: 'text',
+    id: 1,
   },
   {
     title: 'Last Name',
-    settings: settingsForInputs.lastName,
+    settings: 'text',
+    id: 2,
   },
   {
     title: 'E-mail',
-    settings: settingsForInputs.email,
+    settings: 'email',
+    id: 3,
   },
 ]
 
 export class Input extends BaseComponent {
-
+  public frames: Frame[]
 
   constructor() {
-    super('div', ['frame']);
+    super('div', ['user-input']);
+
+    this.frames = []
+
     for(let elem of frameTitles) {
-      this.element.appendChild(new Frame(`${elem.title}`, elem.settings).element)
+      this.frames.push(new Frame(elem.title, elem.settings, elem.id))
     }
-    this.element.appendChild(new Button('add user').element)
-    this.element.appendChild(new Button('cancel').element)
+    for(let elem of this.frames) {
+      this.element.appendChild(elem.element)
+    }
   }
 }
