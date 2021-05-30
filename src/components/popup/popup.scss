@@ -1,0 +1,70 @@
+@import '../shared/colors.scss';
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.popup-inner{
+  background-color: #fff;
+  border-radius: 0.25rem;
+}
+
+.popup-title {
+  width: 100%;
+  height: 65px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.0075rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+.popup-btn{
+  height: 35px;
+  border-radius: 0.25rem;
+  font-size: 0.7rem;
+  letter-spacing: 1.25px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 500;
+}
+.popup-btn-confirm {
+  width: 110px;
+  background-color: $main-color;
+  color: #fff;
+}
+.popup-btn-disline {
+  width: 95px;
+  background-color: $disline-btn-color;
+  color: $main-color;
+  margin-left: 1rem;
+}
+.popup-btns{
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#my-label-id {
+  top: 25%;
+  font-size: 0.6rem;
+}
+
+.mdc-text-field__input{
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+}
