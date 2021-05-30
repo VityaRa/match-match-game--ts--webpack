@@ -2,16 +2,22 @@ import { BaseComponent } from '../base-component';
 import { RouteButton } from './route-btn';
 import './header.scss'
 
-export class ActionButton extends BaseComponent {
-  private text: string;
+type actionState = 'Register User' | 'Start Game' | 'End Game'
+interface IStage {
+  isLogin: boolean,
+  isGame: boolean,
+}
 
-  constructor(text: string = 'Register') {
+export class ActionButton extends BaseComponent {
+  public state: actionState = 'Register User';
+
+  constructor() {
     super('button');
-    this.text = text;
-    this.element.textContent = this.text;
+    this.element.textContent = this.state;
   }
 
-  makeAction(): void {
+  makeAction(stage: IStage): void {
+    if (!stage.isLogin) return;
 
   }
 }

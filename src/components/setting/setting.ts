@@ -32,9 +32,10 @@ export class SettingsPage extends BaseComponent{
     settings.forEach(setting => {
       this.settings.push(new Select(setting.title, setting.placeHolder, setting.options))
     })
-
     this.settings.forEach(elem => {
       this.element.appendChild(elem.element)
     })
+
+
   }
 }

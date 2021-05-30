@@ -1,8 +1,8 @@
 import { BaseComponent } from '../base-component';
 import { Card } from '../card/card';
 import './cards-field.scss';
+import { SHOW_TIME } from '../shared/constants'
 
-const SHOW_TIME = 1;
 
 export class CardsField extends BaseComponent {
   private cards: Card[] = [];

@@ -3,8 +3,10 @@ import { Card } from '../card/card';
 import { CardsField } from '../cards-field/cards-field';
 import { delay } from '../shared/delay';
 import { Timer } from '../timer/timer';
+import { SHOW_TIME, FLIP_DELAY } from '../shared/constants'
+import { Popup } from '../popup/popup';
 
-const FLIP_DELAY = 3;
+
 type ImageURL = string;
 
 export class Game extends BaseComponent {
@@ -16,6 +18,8 @@ export class Game extends BaseComponent {
 
   private isAnimation = false;
 
+  private counter: number = 4
+
   constructor() {
     super('div', ['game-content']);
     this.cardsField = new CardsField();
@@ -26,7 +30,10 @@ export class Game extends BaseComponent {
   }
 
   startGame(images: ImageURL[]): void {
-    this.timer.start()
+
+    setTimeout(() => {
+      this.timer.start()
+    }, SHOW_TIME * 1000)
 
     this.cardsField.clear();
     const cards = images
@@ -60,12 +67,20 @@ export class Game extends BaseComponent {
       await delay(FLIP_DELAY * 1000);
       await Promise.all([this.activeCard.flipToBack(), card.flipToBack()]);
     } else {
-      // right chosen card logic
-      /*
-
-      */
+      this.counter -= 2
+      if (!this.counter) {
+        this.finishGame()
+      }
     }
     this.activeCard = undefined;
     this.isAnimation = false;
+  }
+
+  finishGame() {
+    let popup = new Popup('Congratz')
+    this.element.parentElement?.parentElement?.parentElement?.appendChild(popup.element);
+
+    let event = new Event('GameFinished', {bubbles: true});
+    popup.element.dispatchEvent(event)
   }
 }
