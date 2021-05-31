@@ -26,6 +26,11 @@ export interface IState {
   };
 }
 
+export interface IGame {
+  cardsCount: string;
+  category: string;
+}
+
 export class App {
   public appState: IState = {
     currentPath: 'about',
@@ -123,20 +128,47 @@ export class App {
       ?.classList.add(activeRouteBtnClass);
   }
 
-  async start(): Promise<void> {
+  getCategory(category: string): number {
+    if (category === 'animals') return 0;
+    return 1;
+  }
+
+  getCountNumber(stringCount: string): number {
+    switch (stringCount) {
+      case '4x4':
+        return 4
+      case '6x6':
+          return 6
+      case '8x8':
+        return 8
+      default:
+        return 0
+    }
+  }
+
+  async start(settings: IGame): Promise<void> {
     const res = await fetch('./images.json');
     const data: ImageCategory[] = await res.json();
-    const categories = data[0];
-    const images = categories.images.map(
-      (name) => `${categories.category}/${name}`
-    );
 
-    this.pageGame.startGame(images);
+    const categories = data[this.getCategory(settings.category)];
+    const cardCount = this.getCountNumber(settings.cardsCount) ** 2 / 2
+    console.log(cardCount);
+
+    const images: string[] = [];
+
+    categories.images.filter((elem, index) => index < cardCount).forEach((name, index) => {
+      if (index === cardCount) return;
+      images.push(`${categories.category}/${name}`)
+    })
+
+    console.log(images);
+
+    this.pageGame.startGame(images, cardCount);
   }
 
   removePrevHighlighted(): void {
     document
-      .querySelectorAll(`[data-ref=${this.appState.currentPath}]`)
+      .querySelectorAll(`.active-btn`)
       .forEach((btn) => btn.classList.remove(activeRouteBtnClass));
   }
 
@@ -176,7 +208,6 @@ export class App {
       });
   }
 
-  //showPopup()
 
   actionButtonEvent() {
     if (!this.appState.stage.isLogin) {
@@ -184,7 +215,7 @@ export class App {
       this.rootElement.appendChild(pop.element);
     } else if (!this.appState.stage.isGame) {
       this.pageGame = new Game()
-      this.start()
+      this.start(this.appState.gameSettings)
       this.render('game')
       this.appState.stage.isGame = true;
     } else alert('hey');

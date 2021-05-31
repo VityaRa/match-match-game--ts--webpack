@@ -17,7 +17,6 @@ export const settings = [
     options: [
       '4x4',
       '6x6',
-      '8x8',
     ]
   }
 ]

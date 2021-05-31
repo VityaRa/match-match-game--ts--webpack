@@ -7,5 +7,5 @@ window.onload = () => {
 
   if (!$app) throw Error('App root not found');
 
-  new App($app).start();
+  new App($app);
 };

@@ -19,6 +19,24 @@
   }
 }
 
+.card-container.card-size-4{
+  flex: 1 0 15%;
+}
+
+.card-container.card-size-6{
+  flex: 1 0 10%;
+}
+
+.game-card.card-size-4 {
+  width: 10rem;
+  height: 10rem;
+}
+
+.game-card.card-size-6 {
+  width: 7rem;
+  height: 5rem;
+}
+
 .game-card {
   width: 10rem;
   height: 12rem;

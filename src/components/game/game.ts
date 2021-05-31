@@ -29,8 +29,13 @@ export class Game extends BaseComponent {
     this.element.appendChild(this.cardsField.element);
   }
 
-  startGame(images: ImageURL[]): void {
+  getSize(cardCount: number): string {
+    if (cardCount === 8) return 'card-size-4'
+    else return 'card-size-6'
+  }
 
+  startGame(images: ImageURL[], cardCount: number): void {
+    this.counter = cardCount * 2
     setTimeout(() => {
       this.timer.start()
     }, SHOW_TIME * 1000)
@@ -38,7 +43,7 @@ export class Game extends BaseComponent {
     this.cardsField.clear();
     const cards = images
       .concat(images)
-      .map((url) => new Card(url))
+      .map((url) => new Card(url, this.getSize(cardCount)))
       .sort(() => Math.random() - 0.5);
 
     cards.forEach((card) => card.element.addEventListener('click', () => this.cardHandler(card)));
@@ -60,11 +65,11 @@ export class Game extends BaseComponent {
     }
 
     if (this.activeCard.image !== card.image) {
-      // error chosen card logic
-      /*
-
-      */
+      this.activeCard.element.classList.toggle('red')
+      card.element.classList.toggle('red')
       await delay(FLIP_DELAY * 1000);
+      this.activeCard.element.classList.toggle('red')
+      card.element.classList.toggle('red')
       await Promise.all([this.activeCard.flipToBack(), card.flipToBack()]);
     } else {
       this.counter -= 2
